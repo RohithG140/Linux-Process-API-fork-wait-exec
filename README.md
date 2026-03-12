@@ -53,55 +53,44 @@ chmod 755 forkcheck.o
 
 ./forkcheck.o
 
-##OUTPUT
+## OUTPUT
 
 ![Alt text](forkcheck.png)
 
 ## C Program to execute Linux system commands using Linux API system calls exec() , exit() , wait() family
 
+nano exitwait.c
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+int main() {
+    int status;
+    
+    printf("Running ps with execlp\n");
+    if (fork() == 0) {
+        execlp("ps", "ps", "-f", NULL);
+        exit(1);
+    }
+    wait(&status);
+    
+    printf("Done.\n");
+    return 0;
+}
+```
+gcc exitwait.c -o exitwait.o
+
+chmod 755 exitwait.o
+
+./exitwait.o
 
 
 
-fsfsfffdhgdhgd
+## OUTPUT
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##OUTPUT
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Alt text](image.png)
 
 # RESULT:
 The programs are executed successfully.
